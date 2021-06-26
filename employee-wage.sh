@@ -1,26 +1,32 @@
-#!/bin/bash -x
+x#!/bin/bash 
 echo "Welcome to Employee Wage Computation"
 present=1
 absent=0
 parttime=2
-wageprhr=20
-day=20
-for ((day=1;day<=20;day++))
+maxhrs=100
+emp_rate_pr_hr=20
+numtotalworkingday=20
+
+totalemphr=0
+totalwokingday=0
+while [[ $totalemphr -lt $maxhrs && $totalworkingday -lt $numtotalworkingday ]]
 do
+((totalworkingday++))
 attend=$((RANDOM%3))
 case $attend  in
-	$present)
-fulldayhr=8
-echo "employee is present" ;;
+$present)
+	emphr=8
+	 ;;
 $parttime)
-echo "employee is parttime"
-fulldayhr=4;;
+	
+	emphr=4;;
 *)
-fulldayhr=0
-echo "employee is absent"
+	emphr=0
+
 ;;
 esac
-salary=$(($wageprhr * $fulldayhr))
-totalwage=$(($salary * $day))
+	totalemphr=$(($totalemphr + $emphr ))
 done
-echo $totalwage
+echo  "totalworking hours is$totalemphr"
+totalsalary=$(($totalemphr * $emp_rate_pr_hr))
+echo "total salar is $totalsalary"
