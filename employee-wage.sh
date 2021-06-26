@@ -5,17 +5,17 @@ absent=0
 parttime=2
 wageprhr=20
 attend=$((RANDOM%3))
-if [ $attend -eq $present ]
-then
+case $attend  in
+	$present)
 fulldayhr=8
-echo "employee is present"
-elif [ $attend -eq $parttime ]
-then
+echo "employee is present" ;;
+$parttime)
 echo "employee is parttime"
-fulldayhr=4
-else
+fulldayhr=4;;
+*)
 fulldayhr=0
 echo "employee is absent"
-fi
+;;
+esac
 salary=$(($wageprhr * $fulldayhr))
 echo $salary
