@@ -29,7 +29,9 @@ do
         attend=$((RANDOM%3))
 	getworkinghr $attend
 	totalworkinghr=$(($totalworkinghr + $workinghr ))
+	dailywage[$totalworkingday]=$(($workinghr*$emp_rate_pr_hr))
 done
-echo  "totalworking hours is$totalworkinghr"
 totalsalary=$(($totalworkinghr * $emp_rate_pr_hr))
 echo "total salar is $totalsalary"
+echo "daily wage"
+echo  ${dailywage[@]}
