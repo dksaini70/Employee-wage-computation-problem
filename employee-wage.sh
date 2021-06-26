@@ -4,6 +4,9 @@ present=1
 absent=0
 parttime=2
 wageprhr=20
+day=20
+for ((day=1;day<=20;day++))
+do
 attend=$((RANDOM%3))
 case $attend  in
 	$present)
@@ -18,4 +21,6 @@ echo "employee is absent"
 ;;
 esac
 salary=$(($wageprhr * $fulldayhr))
-echo $salary
+totalwage=$(($salary * $day))
+done
+echo $totalwage
